@@ -53,11 +53,17 @@ class Chatbox {
         // Get the message from the text input field
         const message = this.textField.value.trim();
         console.log('Sending message:', message);
-        
-                // console.log('Message from User:', msg1);
-                // this.userchat(this.chatBox)
+    
         // If the message is not empty, send it to the server
         if (message) {
+            // Display user's message immediately
+            let userMsg = { name: "User", msg: message };
+            this.messages.push(userMsg);
+            this.updateChatText(this.chatBox);
+    
+            // Display typing indicator
+            this.displayTypingIndicator();
+    
             // Fetch the response from the Flask server
             console.log('Sending message to server...');
             fetch('/get', {
@@ -76,12 +82,12 @@ class Chatbox {
             })
             .then(data => {
                 // Process the response from the server
-                let msg1 = { name: "User", msg: message };
                 let msg2 = { name: "Sam", msg: data.answer };
     
-                // Update chat messages with user's message first, then Sam's response
-                
-                this.messages.push(msg1);
+                // Remove typing indicator before displaying Sam's reply
+                this.removeTypingIndicator();
+    
+                // Update chat messages with Sam's response
                 this.messages.push(msg2);
                 console.log('Message from Sam:', msg2);
     
@@ -92,12 +98,30 @@ class Chatbox {
                 // Handle errors
                 console.error('Error:', error);
                 this.updateChatText(this.chatBox);
+    
+                // Remove typing indicator in case of error
+                this.removeTypingIndicator();
             });
     
             // Clear the input field after sending the message
             this.textField.value = '';
         }
     }
+    
+    displayTypingIndicator() {
+        // Add the typing indicator message ("...") to the chat messages
+        let typingIndicatorMsg = { name: "Sam", msg: "..." };
+        this.messages.push(typingIndicatorMsg);
+        this.updateChatText(this.chatBox);
+    }
+    
+    removeTypingIndicator() {
+        // Remove the typing indicator message ("...") from the chat messages
+        this.messages = this.messages.filter(msg => msg.msg !== "...");
+        this.updateChatText(this.chatBox);
+    }
+    
+    
     
     showFlashMessage() {
         const messageBox = document.querySelector('.message-box');
