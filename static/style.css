@@ -75,16 +75,8 @@ body {
 }
 
 /* MESSAGES */
-.chatbox-user__messages {
+.chatbox__messages {
     margin-top: auto;
-    display: flex;
-    overflow-y: scroll;
-    margin-right:4px;
-    flex-direction: column-reverse;
-}
-.chatbox-bot__messages {
-    margin-top: auto;
-    margin-left:4px;
     display: flex;
     overflow-y: scroll;
     flex-direction: column-reverse;

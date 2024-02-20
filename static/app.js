@@ -53,10 +53,9 @@ class Chatbox {
         // Get the message from the text input field
         const message = this.textField.value.trim();
         console.log('Sending message:', message);
-        let msg1 = { name: "User", msg: message };
-        this.messages.push(msg1);
-                console.log('Message from User:', msg1);
-                this.userchat(this.chatBox)
+        
+                // console.log('Message from User:', msg1);
+                // this.userchat(this.chatBox)
         // If the message is not empty, send it to the server
         if (message) {
             // Fetch the response from the Flask server
@@ -77,11 +76,12 @@ class Chatbox {
             })
             .then(data => {
                 // Process the response from the server
-                
+                let msg1 = { name: "User", msg: message };
                 let msg2 = { name: "Sam", msg: data.answer };
     
                 // Update chat messages with user's message first, then Sam's response
                 
+                this.messages.push(msg1);
                 this.messages.push(msg2);
                 console.log('Message from Sam:', msg2);
     
@@ -119,35 +119,52 @@ class Chatbox {
             console.error('Message box element not found.');
         }
     }
-
-    userchat(chatBox)
-    {
+    updateChatText(chatbox) {
         var html = '';
-        this.messages.slice().reverse().forEach(item => {
-            if (item.name === "User") {
-                html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
-            } 
-        });
-        const chatMessages = chatBox.querySelector('.chatbox-user__messages');
-        chatMessages.innerHTML = html;
-        console.log('Chat user text updated.');
-
-    }
-
-    updateChatText(chatBox) {
-        var html = '';
-        this.messages.slice().reverse().forEach(item => {
-            // if (item.name === "User") {
-            //     html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
-            // } else 
-            if (item.name === "Sam") {
-                html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>';
+        this.messages.slice().reverse().forEach(function(item, index) {
+            if (item.name === "Sam")
+            {
+                html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>'
             }
-        });
-        const chatMessages = chatBox.querySelector('.chatbox-bot__messages');
-        chatMessages.innerHTML = html;
-        console.log('Chat text updated.');
+            else
+            {
+                html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>'
+            }
+          });
+
+        const chatmessage = chatbox.querySelector('.chatbox__messages');
+        chatmessage.innerHTML = html;
     }
+
+
+    // userchat(chatBox)
+    // {
+    //     var html = '';
+    //     this.messages.slice().reverse().forEach(item => {
+    //         if (item.name === "User") {
+    //             html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
+    //         } 
+    //     });
+    //     const chatMessages = chatBox.querySelector('.chatbox-user__messages');
+    //     chatMessages.innerHTML = html;
+    //     console.log('Chat user text updated.');
+
+    // }
+
+    // updateChatText(chatBox) {
+    //     var html = '';
+    //     this.messages.slice().reverse().forEach(item => {
+    //         // if (item.name === "User") {
+    //         //     html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
+    //         // } else 
+    //         if (item.name === "Sam") {
+    //             html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>';
+    //         }
+    //     });
+    //     const chatMessages = chatBox.querySelector('.chatbox__messages');
+    //     chatMessages.innerHTML = html;
+    //     console.log('Chat text updated.');
+    // }
 }    
 
 // Initialize Chatbox
