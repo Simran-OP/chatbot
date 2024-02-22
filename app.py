@@ -1,37 +1,47 @@
 from flask import Flask, render_template, request, jsonify
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch,time
+import os, sys, requests, json
+from random import randint
 
 app = Flask(__name__)
-# tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
-# model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
 
-@app.route("/")
-def index():
+
+@app.route('/')
+def home():
     return render_template('chat.html')
+
 
 @app.route("/get", methods=["POST"])
 def chat():
     data = request.get_json()
-    print("Received JSON Data:", data)
+    # print("Received JSON Data:", data)
     text = data.get("msg") if data else None
-    print("Text:", text)
+    # print("Text:", text)
     if text:
-        response = get_Chat_response(text)
+        response = extract(text)
         msg2 = {"answer": response}
         return jsonify(msg2)
     else:
         return jsonify({"error": "No message received"})
 
-def get_Chat_response(text):
-     time.sleep(2)
-     return "hey"
-    # Let's chat for 5 lines
-    # for step in range(5):
-    #     new_user_input_ids = tokenizer.encode(str(text) + tokenizer.eos_token, return_tensors='pt')
-    #     bot_input_ids = torch.cat([chat_history_ids, new_user_input_ids], dim=-1) if step > 0 else new_user_input_ids
-    #     chat_history_ids = model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
-    #     return tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
 
-if __name__ == '__main__':
+def extract(text):
+    payload = json.dumps({"sender": "Rasa", "message": text})
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    response = requests.request("POST", url="http://localhost:5005/webhooks/rest/webhook", headers=headers, data=payload)
+    # print(response)
+    # return response.text
+    response = response.json()
+    resp = []
+    for i in range(len(response)):
+        try:
+            resp.append(response[i]['text'])
+        except:
+            continue
+    result = resp
+    print(result)
+    return result
+    # return render_template('index.html', result=result, text=text)
+
+
+if __name__ == "__main__":
     app.run(debug=True)

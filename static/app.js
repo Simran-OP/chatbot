@@ -16,23 +16,23 @@ class Chatbox {
 
     initialize() {
         // Add event listeners
-        console.log('Adding event listeners...');
+        console.log('Adding event listeners. . .');
         this.openButton.addEventListener('click', () => this.toggleChatbox());
         this.sendButton.addEventListener('click', () => this.sendMessage());
         this.textField.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
-                console.log('Enter key pressed, sending message...');
+                // console.log('Enter key pressed, sending message. . .');
                 this.sendMessage();
             }
         });
 
         // Debugging: Log the initial state
-        console.log('Initial state:', this.state);
-        console.log('Initial messages:', this.messages);
+        // console.log('Initial state:', this.state);
+        // console.log('Initial messages:', this.messages);
 
         // Debugging: Log a message when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM fully loaded');
+            // console.log('DOM fully loaded');
             // Show flash message when the page is fully loaded
             this.showFlashMessage();
         });
@@ -43,7 +43,7 @@ class Chatbox {
         this.state = !this.state;
 
         // Debugging: Log the new state
-        console.log('New state:', this.state);
+        // console.log('New state:', this.state);
 
         // Toggle the 'chatbox--active' class based on the state
         this.chatBox.classList.toggle('chatbox--active', this.state);
@@ -52,7 +52,7 @@ class Chatbox {
     sendMessage() {
         // Get the message from the text input field
         const message = this.textField.value.trim();
-        console.log('Sending message:', message);
+        // console.log('Sending message:', message);
     
         // If the message is not empty, send it to the server
         if (message) {
@@ -65,7 +65,7 @@ class Chatbox {
             this.displayTypingIndicator();
     
             // Fetch the response from the Flask server
-            console.log('Sending message to server...');
+            // console.log('Sending message to server. . .');
             fetch('/get', {
                 method: 'POST',
                 mode: "cors",
@@ -89,14 +89,14 @@ class Chatbox {
     
                 // Update chat messages with Sam's response
                 this.messages.push(msg2);
-                console.log('Message from Sam:', msg2);
+                // console.log('Message from Sam:', msg2);
     
                 // Update the chat text
                 this.updateChatText(this.chatBox);
             })
             .catch(error => {
                 // Handle errors
-                console.error('Error:', error);
+                // console.error('Error:', error);
                 this.updateChatText(this.chatBox);
     
                 // Remove typing indicator in case of error
@@ -109,15 +109,15 @@ class Chatbox {
     }
     
     displayTypingIndicator() {
-        // Add the typing indicator message ("...") to the chat messages
-        let typingIndicatorMsg = { name: "Sam", msg: "..." };
+        // Add the typing indicator message (". . .") to the chat messages
+        let typingIndicatorMsg = { name: "Sam", msg: ". . ." };
         this.messages.push(typingIndicatorMsg);
         this.updateChatText(this.chatBox);
     }
     
     removeTypingIndicator() {
-        // Remove the typing indicator message ("...") from the chat messages
-        this.messages = this.messages.filter(msg => msg.msg !== "...");
+        // Remove the typing indicator message (". . .") from the chat messages
+        this.messages = this.messages.filter(msg => msg.msg !== ". . .");
         this.updateChatText(this.chatBox);
     }
     
@@ -137,7 +137,7 @@ class Chatbox {
             setTimeout(() => {
                 messageBox.classList.remove('messages-box-animation');
                 messageBox.style.opacity = '0';
-                console.log('Flash message animation completed.');
+                // console.log('Flash message animation completed.');
             }, 2000); // 2000 milliseconds = 2 seconds
         } else {
             console.error('Message box element not found.');
@@ -152,6 +152,10 @@ class Chatbox {
             }
             else
             {
+                if(item.msg=='. . .')
+                {
+
+                }
                 html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>'
             }
           });
