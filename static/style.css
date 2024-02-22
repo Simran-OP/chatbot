@@ -87,6 +87,12 @@ body {
     max-width: 60.6%;
     width: fit-content;
 }
+.messages__item--typing {
+    background:#eee;
+    /* max-width: 60.6%; */
+    width: 80px;
+    height: 30px;
+}
 
 .messages__item--operator {
     margin-left: auto;
@@ -234,17 +240,29 @@ body {
  * Dot Flashing
  * ==============================================
  */
-.typing-indicator {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #9880ff;
-  color: #9880ff;
-  animation: dot-flashing 1s infinite linear alternate;
-  animation-delay: 0.5s;
+ .messages__item--typing {
+    background: #eee;
+    width: 80px; /* Set width to 50px */
+    height: 40px; /* Set height to 20px */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    border-top-left-radius: 20px; /* Match border radius of operator bubble */
+    border-top-right-radius: 20px; /* Match border radius of operator bubble */
+    border-bottom-right-radius: 20px; /* Match border radius of operator bubble */
 }
-.typing-indicator::before, .dot-flashing::after {
+
+.typing-indicator {
+    position: relative;
+    width: 10px; /* Adjust the size of the dot */
+    height: 10px; /* Adjust the size of the dot */
+    border-radius: 50%; /* Ensure the dot is circular */
+    background-color: #9880ff;
+    color: #9880ff;
+    animation: typing-indicator 1s infinite linear alternate;
+    animation-delay: 0.5s;
+}
+.typing-indicator::before, .typing-indicator::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -257,7 +275,7 @@ body {
   border-radius: 5px;
   background-color: #9880ff;
   color: #9880ff;
-  animation: dot-flashing 1s infinite alternate;
+  animation: typing-indicator 1s infinite alternate;
   animation-delay: 0s;
 }
 .typing-indicator::after {
@@ -267,7 +285,7 @@ body {
   border-radius: 5px;
   background-color: #9880ff;
   color: #9880ff;
-  animation: dot-flashing 1s infinite alternate;
+  animation: typing-indicator 1s infinite alternate;
   animation-delay: 1s;
 }
 

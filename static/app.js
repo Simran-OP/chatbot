@@ -143,56 +143,33 @@ class Chatbox {
             console.error('Message box element not found.');
         }
     }
+
     updateChatText(chatbox) {
         var html = '';
         this.messages.slice().reverse().forEach(function(item, index) {
-            if (item.name === "Sam")
-            {
-                html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>'
-            }
-            else
-            {
-                if(item.msg=='. . .')
-                {
-
+            console.log("Processing message:", item.msg); // Debug statement
+            
+            if (item.name === "Sam") {
+                if (item.msg === '. . .') { // Check if the message is empty or whitespace only
+                    console.log("Typing indicator detected"); // Debug statement
+                    
+                    html += '<div class="messages__item--typing">    <div class="typing-indicator"></div></div>';
+                } else {
+                    console.log("Normal message detected"); // Debug statement
+                    html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>';
+                    
                 }
-                html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>'
+            } else {
+                html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
             }
-          });
-
+        });
+    
+        console.log("Final HTML:", html); // Debug statement
+    
         const chatmessage = chatbox.querySelector('.chatbox__messages');
         chatmessage.innerHTML = html;
     }
 
-
-    // userchat(chatBox)
-    // {
-    //     var html = '';
-    //     this.messages.slice().reverse().forEach(item => {
-    //         if (item.name === "User") {
-    //             html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
-    //         } 
-    //     });
-    //     const chatMessages = chatBox.querySelector('.chatbox-user__messages');
-    //     chatMessages.innerHTML = html;
-    //     console.log('Chat user text updated.');
-
-    // }
-
-    // updateChatText(chatBox) {
-    //     var html = '';
-    //     this.messages.slice().reverse().forEach(item => {
-    //         // if (item.name === "User") {
-    //         //     html += '<div class="messages__item messages__item--operator">' + item.msg + '</div>';
-    //         // } else 
-    //         if (item.name === "Sam") {
-    //             html += '<div class="messages__item messages__item--visitor">' + item.msg + '</div>';
-    //         }
-    //     });
-    //     const chatMessages = chatBox.querySelector('.chatbox__messages');
-    //     chatMessages.innerHTML = html;
-    //     console.log('Chat text updated.');
-    // }
 }    
 
 // Initialize Chatbox
