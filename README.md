@@ -1,8 +1,4 @@
-![Binaryhood](Logo/BinaryhoodLogo.png)
 
-# ChatBot
-
-## Installation & Setup
 
 [Install Python] https://www.dataquest.io/blog/installing-python-on-mac/
 
