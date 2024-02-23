@@ -27,35 +27,62 @@ body {
     position: absolute;
     bottom: 30px;
     right: 30px;
+
 }
 .image__button{
-    width: 50px;
+    width: 40px;
     height: auto;
 }
 
 /* CONTENT IS CLOSE */
 .chatbox__support {
+position:relative;
     display: flex;
     flex-direction: column;
     background: #eee;
-    width:800px;
-    height: 400px;
+    width:600px;
+    height: 500px;
     z-index: -123456;
     opacity: 0;
     transition: all .5s ease-in-out;
+    /*resize:both;
+    overflow:auto;*/
 }
 
+.chatbox__support::after{
+content:'';
+position:absolute;
+top:0;
+left:-10px;
+width:10px;
+height:100%;
+cursor:ew-resize;
+z-index:999;}
 /* CONTENT ISOPEN */
 .chatbox--active {
     transform: translateY(-40px);
     z-index: 123456;
     opacity: 1;
+    resize:both;
 
 }
 
 /* BUTTON */
 .chatbox__button {
     text-align: right;
+}
+
+.resizable{
+    z-index:2;
+    background-color:red;
+    border-top-right-radius:10px;
+    position:absolute;
+    bottom:0px;
+    width:40px;
+    height:40px;
+    cursor:sw-resize;
+
+
 }
 
 .send__button {
@@ -240,20 +267,22 @@ body {
  * Dot Flashing
  * ==============================================
  */
- .messages__item--typing {
-    background: #eee;
-    width: 80px; /* Set width to 50px */
-    height: 40px; /* Set height to 20px */
-    display: flex; /* Use flexbox for centering */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    border-top-left-radius: 20px; /* Match border radius of operator bubble */
-    border-top-right-radius: 20px; /* Match border radius of operator bubble */
-    border-bottom-right-radius: 20px; /* Match border radius of operator bubble */
+.messages__item--typing {
+    background: white;
+    width: 80px;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .typing-indicator {
     position: relative;
+    margin-left:3px;
     width: 10px; /* Adjust the size of the dot */
     height: 10px; /* Adjust the size of the dot */
     border-radius: 50%; /* Ensure the dot is circular */
@@ -294,6 +323,7 @@ body {
     background-color: #9880ff;
   }
   50%, 100% {
-    background-color: rgba(152, 128, 255, 0.2);
+    background-color:var(--primary)
+
   }
 }
