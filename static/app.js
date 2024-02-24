@@ -6,10 +6,7 @@ class Chatbox {
        this.chatBox = document.querySelector('.chatbox__support');
        this.sendButton = document.querySelector('.send__button');
        this.textField = this.chatBox.querySelector('input');
-
-       const resizer = document.querySelector(".resizable");
-           let cur;
-           resizer.addEventListener('mousedown',mousedown);
+        this.fullScreen = document.querySelector('.full_screen_div');
        // Initialize state and messages array
        this.state = false;
        this.messages = [];
@@ -29,6 +26,8 @@ class Chatbox {
                this.sendMessage();
            }
        });
+       let flag=1;
+       this.fullScreen.addEventListener("click", () => this.fullScreenBox());
 
        // Debugging: Log the initial state
        // console.log('Initial state:', this.state);
@@ -41,32 +40,10 @@ class Chatbox {
            this.showFlashMessage();
        });
    }
-
-
-
-          mousedown(e)
-           {
-           cur=e.target;
-           let prevX = e.clientX;
-           let prevY=e.clientY;
-           window.addEventListener('mousemove',mousemove);
-           window.addEventListener('mouseup',mouseup);
-           function mousemove(e){
-           const rect = chatBox.getBoundingClientRect();
-           chatbox.style.width = rect.width- (prevX-e.clientX)+"px";
-           chatbox.style.height = rect.width - (prevY-e.clientY) +"px";
-           prevX=e.clientX;
-           prevY=e.clientY;
-           }
-           function mouseup(e){
-           window.removeEventListener('mousemove',mousemove);
-           window.removeEventListener('mouseup',mouseup);
-           }
-        }
-
-
-
-
+   fullScreenBox(){
+    this.state=!this.state;
+    this.chatBox.classList.toggle('fullview', this.state);
+   }
    toggleChatbox() {
        // Toggle the chatbox state
        this.state = !this.state;

@@ -21,6 +21,38 @@ body {
     --primary: #581B98;
 }
 
+/* For mobile devices */
+@media only screen and (max-width: 600px) {
+    .chatbox {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .chatbox__support {
+        width: 100%; /* Adjust width for smaller screens */
+        height: 80vh; /* Adjust height for smaller screens */
+    }
+}
+
+/* For tablets and larger devices */
+@media only screen and (min-width: 601px) {
+    .chatbox {
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .chatbox__support {
+        width: 600px;
+        height: 500px;
+    }
+}
+
+/* Additional styles for larger screens if needed */
+/* @media only screen and (min-width: 1200px) {
+    /* Add your additional styles here */
+
+
+/* } */
 /* CHATBOX
 =============== */
 .chatbox {
@@ -100,6 +132,14 @@ z-index:999;}
     top: 0;
     background: orange;
 }
+/* full screen icon */
+.full{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 15px;
+}
+
 
 /* MESSAGES */
 .chatbox__messages {
@@ -160,6 +200,7 @@ z-index:999;}
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    padding-bottom:90px ;
 }
 
 /* HEADER */
@@ -232,7 +273,10 @@ z-index:999;}
     box-shadow: var(--secondaryBoxShadow);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .chatbox__footer input {
@@ -245,6 +289,8 @@ z-index:999;}
 
 .chatbox__send--footer {
     color: white;
+    border: #eee;
+    border-radius: 20%;
 }
 
 .chatbox__button button,
@@ -327,3 +373,15 @@ z-index:999;}
 
   }
 }
+.full_screen_div
+{
+    cursor:pointer;
+}
+.fullview {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+  }
