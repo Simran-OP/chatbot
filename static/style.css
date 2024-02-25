@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: Simran;
+    src: url('./Font/static/Nunito-Medium.ttf');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,7 +11,7 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: Simran, sans-serif;
     font-weight: 600;
     font-size: 100%;
     background:#DFD9E2;
@@ -20,7 +26,125 @@ body {
     --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
     --primary: #581B98;
 }
+/* menu */
+.menuoptions__containers{
+    align-items: container;
+    align-self: center;
+    padding: 10px;
+}
+.first__message{
+    margin-top: 6px;
+    align-self: center;
+    text-align: center;
+}
+.menu{
+    align-items: center;
+}
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
 
+  /* 5 */
+.btn-5 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: var(--primary);
+  background: var(--primaryGradient);
+  }
+  .btn-5:hover {
+    color:var(--primary);
+    background: transparent;
+     box-shadow:none;
+  }
+  .btn-5:before,
+  .btn-5:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: var(--primaryGradient);
+    box-shadow:
+     -1px -1px 5px 0px #fff,
+     7px 7px 20px 0px #0003,
+     4px 4px 5px 0px #0002;
+    transition:400ms ease all;
+  }
+  .btn-5:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-5:hover:before,
+  .btn-5:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+   /* button 6 */
+   .btn-6 {
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: var(--primary);
+  background: var(--secondaryGradient);
+  }
+  .btn-6:hover {
+    color:var(--primary);
+    background: transparent;
+     box-shadow:none;
+  }
+  .btn-6:before,
+  .btn-6:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: var(--secondaryGradient);
+    box-shadow:
+     -1px -1px 5px 0px #fff,
+     7px 7px 20px 0px #0003,
+     4px 4px 5px 0px #0002;
+    transition:400ms ease all;
+  }
+  .btn-6:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-6:hover:before,
+  .btn-6:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  
+.onerow{
+    margin:9px;
+}
 /* For mobile devices */
 @media only screen and (max-width: 600px) {
     .chatbox {
