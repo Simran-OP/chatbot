@@ -14,9 +14,9 @@
             <div class="chatbox__support">
                 <div class="chatbox__header">
                     <div class="chatbox__image--header">
-                        <img class="logo_robo"
+                        <!-- <img class="logo_robo"
                             src="{{ url_for('static', filename='images/cute-robot-waving-hand-cartoon-600nw-1917055787.webp') }}"
-                            alt="image">
+                            alt="image"> -->
                     </div>
                     <div class="chatbox__content--header">
                         
@@ -37,7 +37,7 @@
             </div>
             <div class="message-box">
                 <img class="logo_robo"
-                    src="{{ url_for('static', filename='images/cute-robot-waving-hand-cartoon-600nw-1917055787.webp') }}"
+                    src="{{ url_for('static', filename='images/flash.gif') }}"
                     alt="image">
                 <h4>Hello! </br>
                     Welcome to Edifecs Help Center!</h4>
@@ -56,6 +56,18 @@
     var SCRIPT_ROOT = "{{ request.script_root|tojson|safe }}";
 </script> -->
     <script type="text/javascript" src="../static/app.js"></script>
+    <script>
+        // JavaScript code containing the url_for function
+        var SleepingRobo = "{{ url_for('static', filename='images/logo-sleeping.gif') }}";
+        var Edibot = "{{ url_for('static', filename='images/logo-awake.gif') }}";
+        var SleepingGif = "{{ url_for('static', filename='images/Sleepinggif.gif') }}";
+        // Your other JavaScript code goes here
+        // Make sure to use imagePath wherever you need the URL
+
+        // Example:
+        console.log("Image path:", SleepingRobo+" "+SleepingGif);
+    </script>
+        
 
 </body>
 
