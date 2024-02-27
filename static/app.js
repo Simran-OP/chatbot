@@ -166,19 +166,23 @@ class Chatbox {
                     <div class="first__message">Welcome, I am Edibot<br>How can I help you?</div>
                     <div class="menu">
                         <div class="onerow"> 
-                            <button class="custom-btn btn-5"><span>SpecBuilder</span></button>
-                            <button class="custom-btn btn-6"><span>Analyzer</span></button>
+                            <button class="custom-btn btn-5"><span>Spec Builder</span></button>
+                            <button class="custom-btn btn-6"><span>XEServer</span></button>
+                            <button class="custom-btn btn-5"><span>TPM</span></button>
                         </div>
                         <div class="onerow"> 
-                            <button class="custom-btn btn-5"><span>MapBuilder</span></button>
+                            <button class="custom-btn btn-5"><span>Map Builder</span></button>
+                            <button class="custom-btn btn-6"><span>EAM</span></button>
+                            <button class="custom-btn btn-5"><span>Risk Adjustment</span></button>
+                        </div>
+                        <div class="onerow"> 
+
+                            <button class="custom-btn btn-5"><span>Xengine</span></button>
                             <button class="custom-btn btn-6"><span>TM</span></button>
-                        </div>
-                        <div class="onerow"> 
-                            <button class="custom-btn btn-5"><span>EAM</span></button>
-                            <button class="custom-btn btn-6"><span>Xengine</span></button>
+                            <button class="custom-btn btn-5"><span>Prior Authorization</span></button>
                         </div>
                     </div>
-                    <div class="first__message">You can always come back to this menu. Type--menu </div>
+                    <div class="first__message">You can always come back to this menu. Type menu </div>
                 </div>`;
                 } else if (item.msg === '. . .') {
                     console.log("Typing indicator detected");
@@ -217,23 +221,30 @@ class Chatbox {
     whichButton(event) {
         // Check which button is clicked
         console.log('Button clicked event:', event);
-        if (event.target.classList.contains('custom-btn')) {
+//        if (event.target.classList.contains('custom-btn')) {
             const buttonText = event.target.textContent.trim();
-            console.log('Button clicked:', buttonText);
-            if (buttonText === 'SpecBuilder') {
-                this.sendMessage('SpecBuilder');
-            } else if (buttonText === 'Analyzer') {
-                this.sendMessage('Analyzer');
-            } else if (buttonText === 'MapBuilder') {
-                this.sendMessage('MapBuilder');
+//            console.log('Button clicked:', buttonText);
+            if (buttonText === 'Spec Builder') {
+                this.sendMessage(buttonText);
+            } else if (buttonText === 'TPM') {
+                this.sendMessage(buttonText);
+            } else if (buttonText === 'Map Builder') {
+                this.sendMessage(buttonText);
             } else if (buttonText === 'TM') {
-                this.sendMessage('TM');
+                this.sendMessage(buttonText);
             } else if (buttonText === 'EAM') {
-                this.sendMessage('EAM');
+                this.sendMessage(buttonText);
             } else if (buttonText === 'Xengine') {
-                this.sendMessage('Xengine');
+                this.sendMessage(buttonText);
+            }else if (buttonText === 'XEServer') {
+                this.sendMessage(buttonText);
+            }else if (buttonText === 'Risk Adjustment') {
+                this.sendMessage(buttonText);
+            }else if (buttonText === 'Prior Authorization') {
+                this.sendMessage(buttonText);
             }
-        }
+
+//        }
     }
 }
 

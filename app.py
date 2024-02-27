@@ -61,5 +61,5 @@ def extract(text):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    # app.run(debug=True, host='pssi-abhikverm')
+    # app.run(debug=True)
+    app.run(debug=True, host='pssi-abhikverm')
