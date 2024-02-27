@@ -26,6 +26,15 @@ body {
     --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
     --primary: #581B98;
 }
+/*splash*/
+.splash{
+    height:100%;
+    weight:100%;
+    background-color:red;
+
+}
+
+
 /* menu */
 .menuoptions__containers{
     align-items: container;

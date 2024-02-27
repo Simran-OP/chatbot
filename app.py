@@ -40,7 +40,7 @@ def extract(text):
     # header data is received
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     # with post method the port of rasa is called and text as params is given
-    response = requests.request("POST", url="http://pssi-abhikverm:5005/webhooks/rest/webhook", headers=headers,
+    response = requests.request("POST", url="http://pssi-abhikverm:6000/webhooks/rest/webhook", headers=headers,
                                 data=payload)
     # the response goes tojson format
     response = response.json()
@@ -61,5 +61,5 @@ def extract(text):
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(debug=True, host='pssi-abhikverm')
+    app.run(debug=True)
+    # app.run(debug=True, host='pssi-abhikverm')
