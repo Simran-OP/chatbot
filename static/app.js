@@ -6,7 +6,7 @@ class Chatbox {
         this.sendButton = document.querySelector('.send__button');
         this.textField = this.chatBox.querySelector('input');
         this.fullScreen = document.querySelector('.full_screen_div');
-
+        this.messageBox = document.querySelector('.chatbox__messages')
         // Initialize state and messages array
         this.state = false;
         this.messages = [];
@@ -23,7 +23,7 @@ class Chatbox {
                 this.sendMessage();
             }
         });
-
+        
         // Toggle chatbox when open button is clicked
         this.openButton.addEventListener('click', () => this.toggleChatbox());
 
@@ -39,9 +39,10 @@ class Chatbox {
             // console.log('DOM fully loaded');
             this.showFlashMessage();
         });
-
+        this.chatBox.addEventListener('click',(event)=>{this.whichButton(event)});
         // Call pinging function to check server status
-        this.pinging();
+        // this.pinging();
+        this.awake();
     }
 
     fullScreenBox() {
@@ -155,21 +156,15 @@ class Chatbox {
                     html += `<div class=" messages__item messages__item--visitor menuoptions__containers">
                     <div class="first__message">Welcome, I am Edibot<br>How can I help you?</div>
                     <div class="menu">
-                        <div class="onerow"> 
                             <button class="custom-btn btn-5"><span>Spec Builder</span></button>
                             <button class="custom-btn btn-6"><span>XEServer</span></button>
                             <button class="custom-btn btn-5"><span>TPM</span></button>
-                        </div>
-                        <div class="onerow"> 
                             <button class="custom-btn btn-5"><span>Map Builder</span></button>
                             <button class="custom-btn btn-6"><span>EAM</span></button>
                             <button class="custom-btn btn-5"><span>Risk Adjustment</span></button>
-                        </div>
-                        <div class="onerow"> 
                             <button class="custom-btn btn-5"><span>Xengine</span></button>
                             <button class="custom-btn btn-6"><span>TM</span></button>
                             <button class="custom-btn btn-5"><span>Prior Authorization</span></button>
-                        </div>
                     </div>
                     <div class="first__message">You can always come back to this menu. Type menu </div>
                 </div>`;
@@ -201,7 +196,7 @@ class Chatbox {
                 messageBox.classList.remove('messages-box-animation');
                 messageBox.style.opacity = '0';
                 // console.log('Flash message animation completed.');
-            }, 40000); // 2000 milliseconds = 2 seconds
+            }, 3000); // 2000 milliseconds = 2 seconds
         } else {
             console.error('Message box element not found.');
         }
@@ -209,7 +204,7 @@ class Chatbox {
 
     whichButton(event) {
         // Check which button is clicked
-        // console.log('Button clicked event:', event);
+         console.log('Button clicked event:', event);
         const buttonText = event.target.textContent.trim();
         if (buttonText === 'Spec Builder') {
             this.sendMessage(buttonText);
@@ -236,7 +231,7 @@ class Chatbox {
         // Display sleeping message and disable input
         var htmlText = `
             <h4 class="chatbox__heading--header">Chat support closed</h4>
-            <p class="chatbox__description--header">Edibot Down.. zz..zz</p>
+            <p class="chatbox__description--header">Edibot Down...</p>
         `;
 
         var chatboxImageHeader = document.querySelector(".chatbox__image--header");
@@ -250,6 +245,7 @@ class Chatbox {
         this.sendButton.textContent = "";
         this.textField.disabled = true;
         this.sendButton.disabled = true;
+        this.messageBox.style.opacity=0;
         
         // Call awake after some delay
         setTimeout(() => this.pinging(), 3000);
@@ -298,6 +294,7 @@ class Chatbox {
         this.textField.disabled = false;
         this.sendButton.disabled = false;
         this.chatBox.style.background = "#eee";
+           this.messageBox.style.opacity=1;
         this.sendMessage("menu");
     }
 }

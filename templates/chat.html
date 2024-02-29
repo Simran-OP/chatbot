@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>Chatbot</title>
 </head>
-
 <body>
     <div class="container">
         <div class="chatbox">
@@ -14,12 +13,13 @@
             <div class="chatbox__support">
                 <div class="chatbox__header">
                     <div class="chatbox__image--header">
-                        <!-- <img class="logo_robo"
-                            src="{{ url_for('static', filename='images/cute-robot-waving-hand-cartoon-600nw-1917055787.webp') }}"
-                            alt="image"> -->
+                         <img class="logo_robo"
+                            src="{{ url_for('static', filename='images/flash-robo.gif') }}"
+                            alt="image">
                     </div>
                     <div class="chatbox__content--header">
-                        
+                        <h4 class="chatbox__heading--header">Chat support Loading</h4>
+                         <p class="chatbox__description--header">Edibot Loading...</p>
                     </div>
                     <div class="full_screen_div">
                         <img class="full" src="{{ url_for('static', filename='images/fullLast.png') }}" alt="image">
@@ -39,8 +39,7 @@
                 <img class="logo_robo"
                     src="{{ url_for('static', filename='images/flash.gif') }}"
                     alt="image">
-                <h4>Hello! </br>
-                    Welcome to Edifecs Help Center!</h4>
+                <h4>Hello! Welcome to Edifecs Help Center!</h4>
             </div>
             <div class="chatbox__button">
                 <button><img src="{{ url_for('static', filename='images/chat-bubble_6862417.png') }}"
@@ -55,7 +54,7 @@
     // Define SCRIPT_ROOT using Flask's `url_for` function
     var SCRIPT_ROOT = "{{ request.script_root|tojson|safe }}";
 </script> -->
-    <script type="text/javascript" src="../static/app.js"></script>
+    
     <script>
         // JavaScript code containing the url_for function
         var SleepingRobo = "{{ url_for('static', filename='images/logo-sleeping.gif') }}";
@@ -67,8 +66,32 @@
         // Example:
         console.log("Image path:", SleepingRobo+" "+SleepingGif);
     </script>
+    <script type="text/javascript" src="../static/app.js"></script>
         
 
 </body>
 
 </html>
+
+
+<!-- `<div class=" messages__item messages__item--visitor menuoptions__containers">
+    <div class="first__message">Welcome, I am Edibot<br>How can I help you?</div>
+    <div class="menu">
+    <div class="onerow">
+            <button class="custom-btn btn-5"><span>Spec Builder</span></button>
+            <button class="custom-btn btn-6"><span>XEServer</span></button>
+            <button class="custom-btn btn-5"><span>TPM</span></button>
+    </div>
+    <div class="onerow">
+            <button class="custom-btn btn-5"><span>Map Builder</span></button>
+            <button class="custom-btn btn-6"><span>EAM</span></button>
+            <button class="custom-btn btn-5"><span>Risk Adjustment</span></button>
+            </div>
+    <div class="onerow">
+            <button class="custom-btn btn-5"><span>Xengine</span></button>
+            <button class="custom-btn btn-6"><span>TM</span></button>
+            <button class="custom-btn btn-5"><span>Prior Authorization</span></button>
+            </div>
+    </div>
+    <div class="first__message">You can always come back to this menu. Type menu </div>
+</div>`; -->
