@@ -41,14 +41,30 @@ class Chatbox {
         });
         this.chatBox.addEventListener('click',(event)=>{this.whichButton(event)});
         // Call pinging function to check server status
-        // this.pinging();
-        this.awake();
+        this.pinging();
+        // this.awake();
     }
 
     fullScreenBox() {
         // Toggle full screen mode
-        this.state = !this.state;
+       
         this.chatBox.classList.toggle('fullview', this.state);
+        const menubox = document.querySelectorAll('.menu button');
+        if(this.state){
+        menubox.forEach( button =>{
+            button.classList.remove('.custom-btn');
+            button.classList.add('.custom-btn--fullview');
+        
+        })}
+        else if(!this.state){
+            menubox.forEach( button =>{
+                button.classList.add('.custom-btn');
+                button.classList.remove('.custom-btn--fullview');
+            
+            })
+            
+        }
+        this.state = !this.state;
         // console.log('Full screen mode toggled:', this.state);
     }
 
@@ -57,6 +73,7 @@ class Chatbox {
         this.state = !this.state;
         // console.log('Chatbox state toggled:', this.state);
         this.chatBox.classList.toggle('chatbox--active', this.state);
+        
     }
 
     sendMessage(val) {
@@ -241,6 +258,7 @@ class Chatbox {
         chatboxContentHeader.innerHTML = htmlText;
 
         this.chatBox.style.background = `white url('${SleepingGif}') no-repeat center center`;
+        this.chatBox.style.backgroundSize= "450px 450px";
         this.textField.placeholder = "Server down. Please refresh or try again later";
         this.sendButton.textContent = "";
         this.textField.disabled = true;
